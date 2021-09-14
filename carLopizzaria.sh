@@ -14,8 +14,41 @@ menu()
 {
 echo " the is is the menu"
 echo " toppings"
+printf "1. mushrooms,\n 2. onions,\n 3. peperroni,\n 4. peppers,\n 5. sasuage,\n 6. bacon"
+echo " "
+echo "Once your finished picking toppings press X"
 }
+#function that creates the pizza
+ordermenu()
+{
+declare -a yourpizza=() #array where all the chosen topping go into
 
+#start empty beccause because customer hasnt selected any toppings yet
+
+while true 	#loops until customer is finished picking the toppings
+do	
+	#use numbers as selectors for pizza tppping 
+	read -p "pick a topping" toppingresponce
+	if (($toppingresponce == 1 ))
+	then	#appends the topping to the array(yourpizza)
+		yourpizza=("${yourpizza[@]}" "mushroom")
+	elif (($toppingresponce == 2 ))
+	then
+		yourpizza=("${yourpizza[@]}" "onions")
+	elif (($toppingresponce == x ))
+	then
+		echo "finished"
+		break
+	#customer can press x to break loop once he has all the toppings
+	fi
+done 
+#prints all the toppings in the array
+echo ${yourpizza[@]}
+
+
+
+}
+#this function is used to get the customers address when he picks delivery
 delivery()
 {
 header
@@ -42,7 +75,7 @@ echo "is everything correct?"
 
 
 clear
-
+#animated header for pizza
 echo "welcome to Carlo Pizza" 
 sleep 1 
 echo "where the best pizza is made!"
@@ -105,3 +138,5 @@ echo "lets start your order..."
 clear 
 header
 menu 
+ordermenu
+
