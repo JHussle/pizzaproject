@@ -12,13 +12,11 @@ echo " "
 }
 #calls prompt where  menu items are 
 #we dont wanna keep typing this out 
-menu()
+toppings()
 {
-echo " the is is the menu"
-echo " toppings"
-printf "1. mushrooms,\n 2. onions,\n 3. green peppers,\n 4. pepperoni,\n 5. sasuage,\n 6. bacon \n 7. chicken"
+echo " the is is the toppings menu"
+printf "1. mushrooms,\n2. onions,\n3. green peppers,\n4. pepperoni,\n 5. sasuage,\n6. bacon \n7. chicken"
 echo " "
-echo "Once your finished picking toppings press X"
 }
 #function that creates the pizza
 ordermenu()
@@ -29,41 +27,67 @@ declare -a yourpizza=() #array where all the chosen topping go into
 
 while true 	#loops until customer is finished picking the toppings
 do
+	clear
+	header
+	toppings
+	echo " "
+	echo "your current toppings >> ${yourpizza[@]}"
+	echo " "
 	#use numbers as selectors for pizza tppping 
-	read -p "pick a topping using the number or press when finished" toppingresponce
+	read -p "pick a topping using the number" toppingresponce
 	if (($toppingresponce == 1 ))
 	then	#appends the topping to the array(yourpizza)
+		echo "you chose to add mushrooms to your pizza"
 		yourpizza=("${yourpizza[@]}" "mushroom")
+		echo "saving ..."
+		sleep 2
 	elif (($toppingresponce == 2 ))
 	then
 		yourpizza=("${yourpizza[@]}" "onions")
+		echo "you chose to add onions to your pizza"
+		echo "saving ..."
+		sleep 2
 
 	elif (($toppingresponce == 4 ))
         then
                 yourpizza=("${yourpizza[@]}" "pepperoni")
-
+		echo "you chose to add pepperoni to your pizza"
+                echo "saving ..."
+                sleep 2
 	elif (($toppingresponce == 3 ))
         then
-                yourpizza=("${yourpizza[@]}" "green pepper")
+                yourpizza=("${yourpizza[@]}" "green peppers")
+		echo "you chose to add green peppers to your pizza"
+                echo "saving ..."
+                sleep 2
 	elif (($toppingresponce == 5 ))
         then
                 yourpizza=("${yourpizza[@]}" "suasage")
+		echo "you chose to add sausages to your pizza"
+                echo "saving ..."
+                sleep 2
 	elif (($toppingresponce == 6 ))
         then
                 yourpizza=("${yourpizza[@]}" "bacon")
+		echo "you chose to add bacon to your pizza"
+                echo "saving ..."
+                sleep 2
 	elif (($toppingresponce == 7 ))
         then
                 yourpizza=("${yourpizza[@]}" "chicken")
-
+		echo "you chose to add chicken to your pizza"
+                echo "saving ..."
+                sleep 2
 
 	elif (($toppingresponce == x ))
 	then
-		echo "finished"
+		echo "finished adding topping"
 		break
 	#customer can press x to break loop once he has all the toppings
 	fi
 done 
 #prints all the toppings in the array
+echo "here are all the topping in your pizza"
 echo ${yourpizza[@]}
 
 
@@ -171,8 +195,6 @@ else
 fi
 done
 echo "lets start your order..."
-clear 
-header
-menu 
+clear
 ordermenu
 
