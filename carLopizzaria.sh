@@ -16,7 +16,7 @@ menu()
 {
 echo " the is is the menu"
 echo " toppings"
-printf "1. mushrooms,\n 2. onions,\n 3. peperroni,\n 4. peppers,\n 5. sasuage,\n 6. bacon"
+printf "1. mushrooms,\n 2. onions,\n 3. green peppers,\n 4. pepperoni,\n 5. sasuage,\n 6. bacon \n 7. chicken"
 echo " "
 echo "Once your finished picking toppings press X"
 }
@@ -28,15 +28,34 @@ declare -a yourpizza=() #array where all the chosen topping go into
 #start empty beccause because customer hasnt selected any toppings yet
 
 while true 	#loops until customer is finished picking the toppings
-do	
+do
 	#use numbers as selectors for pizza tppping 
-	read -p "pick a topping" toppingresponce
+	read -p "pick a topping using the number or press when finished" toppingresponce
 	if (($toppingresponce == 1 ))
 	then	#appends the topping to the array(yourpizza)
 		yourpizza=("${yourpizza[@]}" "mushroom")
 	elif (($toppingresponce == 2 ))
 	then
 		yourpizza=("${yourpizza[@]}" "onions")
+
+	elif (($toppingresponce == 4 ))
+        then
+                yourpizza=("${yourpizza[@]}" "pepperoni")
+
+	elif (($toppingresponce == 3 ))
+        then
+                yourpizza=("${yourpizza[@]}" "green pepper")
+	elif (($toppingresponce == 5 ))
+        then
+                yourpizza=("${yourpizza[@]}" "suasage")
+	elif (($toppingresponce == 6 ))
+        then
+                yourpizza=("${yourpizza[@]}" "bacon")
+	elif (($toppingresponce == 7 ))
+        then
+                yourpizza=("${yourpizza[@]}" "chicken")
+
+
 	elif (($toppingresponce == x ))
 	then
 		echo "finished"
