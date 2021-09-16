@@ -1,6 +1,6 @@
 
 #!/bin/bash
-
+#calls the prompt where app name is
 header()
 {
 clear
@@ -10,6 +10,8 @@ echo " "
 echo "-------------------------------------------------"
 echo " "
 }
+#calls prompt where  menu items are 
+#we dont wanna keep typing this out 
 menu()
 {
 echo " the is is the menu"
@@ -59,7 +61,7 @@ read -p "what is the city " city
 read -p "what is the state " state
 read -p "what is your zip code " zip
 echo " " 
-
+#confirming the address prompt
 echo "saving ...."
 sleep 1
 header
@@ -87,6 +89,8 @@ read -p "what is your name? " name
 echo " "
 echo "hello $name, we are currently out of cheese"
 sleep 2
+#loop for user selection
+#used to filter out bad input and confirmation
 while true
 do 
 clear
@@ -96,17 +100,28 @@ echo " "
 echo "order selection:"
 echo "1. Delivery "
 echo "2. Carry out"
+#user prompt for delivery or carry out 
 read -p "pick one of the options above using the numbers " typeoforder
+#decision process for ordering 
 if (($typeoforder == 1 ))
 then
+	#choosing delivery
 	echo "you chose a delivery!  "
+	#confirmation with yes or no
+	#yes breaks the loop 
+	#no brings you to the beginning 
 	read -p "there is a $ 1000 service fee for delivery continue y/n " selection 
 	if [ "$selection" == "y" ] || [ "$selection" == "Y" ]
 	then 
+		#calls the header prompt
 		header
+		#calls for the delivery prompt
 		delivery
- 
+ 		#break loops once yes is enter
+		#moves on to toppings stage
 		break
+	#choosing no
+	#same as before
 	elif [ "$selection" == "n" ] || [ "$selection" == "N" ]
 	then
 		echo "returning to service selection"
@@ -117,6 +132,8 @@ then
 	fi
 elif (($typeoforder == 2 ))
 then 
+	#choosing a  carryout
+	#same logic process from delivery 
 	read -p "you chose a carry-out! is this correct? y/n " selection 
 	if [ "$selection" == "y" ] || [ "$selection" == "Y" ]
         then 
